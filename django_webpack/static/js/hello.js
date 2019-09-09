@@ -1,6 +1,6 @@
-// const sayHello = () => alert('hi');
+const sayHello = () => console.log('hi');
 sayHello();
 
-function sayHello() {
-    console.log('here');
-}
+// function sayHello() {
+//     console.log('here');
+// }

@@ -25,7 +25,7 @@ SECRET_KEY = '(%83#w5=($064mzpr5f+d9ijf#w8q)!v+ul(az58&$k&!b(#3g'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -127,12 +127,14 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'django_webpack/static')
 ]
 
-COMPRESS_ROOT = 'webface/static/'
+COMPRESS_ENABLED = True
+COMPRESS_ROOT = 'django_webpack/static/'
 # COMPRESS_PRECOMPILERS = (
 #     ('module', 'compressor_toolkit.precompilers.ES6Compiler'),
 # )
+
 STATICFILES_FINDERS = (
-     'django.contrib.staticfiles.finders.FileSystemFinder',
-     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-     'compressor.finders.CompressorFinder',
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
  )
