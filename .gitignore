@@ -6,3 +6,5 @@ media/
 __pycache__/
 /static/
 */testdata/
+/node_modules/
+package-lock.json
