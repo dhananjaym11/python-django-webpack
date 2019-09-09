@@ -38,8 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'basic_app',
-    'compressor',
-    'compressor_toolkit',
+    # 'compressor',
+    # 'compressor_toolkit',
+    'pipeline',
 ]
 
 MIDDLEWARE = [
@@ -127,14 +128,35 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'django_webpack/static')
 ]
 
-COMPRESS_ENABLED = True
-COMPRESS_ROOT = 'django_webpack/static/'
+# COMPRESS_ENABLED = True
+# COMPRESS_ROOT = 'django_webpack/static/'
 # COMPRESS_PRECOMPILERS = (
 #     ('module', 'compressor_toolkit.precompilers.ES6Compiler'),
 # )
 
+PIPELINE = {
+    'PIPELINE_ENABLED': True,
+    # 'COMPILERS' : (
+    #     'pipeline.compilers.es6.ES6Compiler',
+    # ),
+    'JAVASCRIPT': {
+        'app': {
+            'source_filenames': (
+              'js/main.js',
+            ),
+            'output_filename': 'js/app.js',
+        }
+    }
+}
+PIPELINE_YUGLIFY_BINARY = 'yuglify'
+# PIPELINE['COMPILERS'] = (
+#     'pipeline.compilers.es6.ES6Compiler',
+# )
+
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
+    'pipeline.finders.PipelineFinder',
+    # 'compressor.finders.CompressorFinder',
  )

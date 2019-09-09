@@ -1,4 +1,4 @@
-{% load compress %}
+{% load pipeline %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,9 +11,7 @@
 
 <body>
     <h1>Welcome to Home Page</h1>
-    {% compress js %}
-    <script type="module" src="/static/js/hello.js"></script>
-    {% endcompress %}
+    {% javascript 'app' %}
 </body>
 
 </html>
